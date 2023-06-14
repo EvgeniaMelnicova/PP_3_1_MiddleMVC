@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update user</title>
+</head>
+<body>
+<form style="background: #98FB98; border:1px #00B344  solid; width:300px; text-align:center; padding: 15px"
+      th:method="PATCH" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
+    <h4>Make the necessary changes in the fields below:</h4>
+    <label for="firstName">First name: </label>
+    <input type="text" th:field="*{firstName}" id="firstName"/>
+    <br>
+    <label for="lastName">Last name: </label>
+    <input type="text" th:field="*{lastName}" id="lastName"/>
+    <br>
+    <label for="mobilePhone">Phone number: </label>
+    <input type="text" th:field="*{mobilePhone}" id="mobilePhone"/>
+    <br>
+    <label for="email">E-mail:</label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <br/>
+    <label for="roles">Role:</label>
+    <select class="js-example-basic-single" name="roles" id="roles">
+        <option value="ADMIN">ADMIN</option>
+        <option selected value="USER">USER</option>
+    </select>
+    <br/>
+    <br/>
+    <input style="background-color: #9ACD32" type="submit" value="Update"/>
+</form>
+</body>
+</html>

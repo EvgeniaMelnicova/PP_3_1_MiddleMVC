@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>User page</title>
 </head>
-
 <body>
-<h1>Welcome,to your personal account.</h1>
-<p>Here you can view your personal data:</p>
-<br/>
 <form style="background: #F5DEB3; border:1px #BDB76B  solid; width:300px; text-align:center; padding: 15px"
-      th:method="PATCH" th:action="@{/user}" th:object="${user}">
+      th:method="PATCH" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
+    <h4>This is the page of:</h4>
+    <label for="role">Role: </label>
+    <input readonly type="text" th:field="*{roles}" id="role"/>
+    <br>
     <label for="firstName">First name: </label>
     <input readonly type="text" th:field="*{firstName}" id="firstName"/>
     <br>
@@ -24,13 +23,13 @@
     <br>
     <label for="email">E-mail:</label>
     <input readonly type="text" th:field="*{email}" id="email"/>
-    <br>
-    <label for="roles">Your role is:</label>
-    <input readonly type="text" th:field="*{roles}" id="roles"/>
 </form>
 <br/>
-<form th:action="@{'/logout'}">
-    <input type="submit" value="Logout"/>
+<a th:href="@{/users/{id}/edit(id=${user.getId()})}"><button style="background-color: #3CB371">Update</button></a>
+<br/>
+<br/>
+<form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId()})}">
+    <input style="background-color: #CD5C5C" type="submit" value="Delete"/>
 </form>
 </body>
 </html>
