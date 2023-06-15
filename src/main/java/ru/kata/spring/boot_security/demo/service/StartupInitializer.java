@@ -5,6 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
+import ru.kata.spring.boot_security.demo.repository.UserRepository;
 
 import javax.annotation.PostConstruct;
 import java.util.HashSet;
@@ -14,7 +15,8 @@ import java.util.Set;
 @Component
 public class StartupInitializer {
     private final RoleService rs;
-    private final UserServiceImpl us;
+    private final UserService us;
+    private final UserRepository ur;
     private final BCryptPasswordEncoder bcpe;
 
     @PostConstruct
