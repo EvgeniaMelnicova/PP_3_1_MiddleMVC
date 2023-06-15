@@ -19,4 +19,7 @@ public class RoleServiceImpl implements RoleService {
         .stream(roleRepository.findAll().spliterator(), false)
         .collect(Collectors.toSet());
   }
+
+  @Override
+  public void save(Role role) {roleRepository.save(role);}
 }
