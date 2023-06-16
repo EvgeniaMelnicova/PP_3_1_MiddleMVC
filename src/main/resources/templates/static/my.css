@@ -1,6 +1,6 @@
 body{
     background-color: #000;
-    background-image: url("my-image.jpg");
+    background-image: url("templates/static/my-image.jpg");
     background-size: 15%;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -43,7 +43,7 @@ form{
     width: 400px;
     padding: 20px;
     color: #C0C0C0;
-    background: url("mementomori.jpg") no-repeat;
+    background: url("templates/static/mementomori.jpg") no-repeat;
     background-size: auto 90%;
     background-position: right bottom;
 }

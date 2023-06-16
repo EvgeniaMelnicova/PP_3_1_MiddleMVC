@@ -33,12 +33,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
             .antMatchers("/login", "/").permitAll()
-            .antMatchers("/admin").access("hasAuthority('ADMIN')")
-            .antMatchers("/user").access("hasAnyAuthority('ADMIN', 'USER')")
+            .antMatchers("/admin/**").access("hasAuthority('ADMIN')")
+            .antMatchers("/user/**").access("hasAnyAuthority('ADMIN', 'USER')")
             .anyRequest().authenticated()
-            .and()
-            .formLogin()
-            .loginPage("/login")
+            .and().formLogin().loginPage("/login")
             .loginProcessingUrl("/login")
             .usernameParameter("j_email")
             .passwordParameter("j_password")
@@ -51,6 +49,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .logoutSuccessUrl("/login")
             .and().csrf().disable();
     }
-
-
 }
