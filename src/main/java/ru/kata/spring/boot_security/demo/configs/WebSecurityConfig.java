@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/user/**").access("hasAnyAuthority('ADMIN', 'USER')")
             .anyRequest().authenticated()
             .and().formLogin()
-               // .loginPage("/login")
+                .loginPage("/login")
             .loginProcessingUrl("/login")
             .usernameParameter("j_email")
             .passwordParameter("j_password")

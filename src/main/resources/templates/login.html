@@ -2,6 +2,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+</head>
+<body>
+<h1>Welcome to the project 3.1.2. Spring Boot Security!</h1>
+<br/>
+<h2>If you want to continue, please enter the details in the form below.</h2>
+<form method="post" action="/login">
+    <label for="username">Enter e-mail</label>
+    <input type="text" name="j_email" id="username"/>
+    <br/>
+    <label for="password">Enter password</label>
+    <input type="password" name="j_password" id="password"/>
+    <br/>
+    <br/>
+    <input type="submit" value="login"/>
+    <br/>
+    <br/>
+    <div th:if="${param.error}" style="color: red">
+        Incorrect name or password!
+    </div>
+</form>
+</body>
+
 <style>
     body{
         background-color: #000;
@@ -61,29 +86,4 @@
         padding: 5px 10px 5px 10px;
     }
 </style>
-
-<head>
-    <meta charset="UTF-8">
-    <title>Login page</title>
-</head>
-<body>
-<h1>Welcome to the project 3.1.2. Spring Boot Security!</h1>
-<br/>
-<h2>If you want to continue, please enter the details in the form below.</h2>
-<form name="f" method="post" action="/process_login">
-    <label for="username">Enter username</label>
-    <input type="text" name="username" id="username"/>
-    <br/>
-    <label for="password">Enter password</label>
-    <input type="password" name="password" id="password"/>
-    <br/>
-    <br/>
-    <input type="submit" value="login"/>
-    <br/>
-    <br/>
-    <div th:if="${param.error}" style="color: red">
-        Incorrect name or password!
-    </div>
-</form>
-</body>
 </html>

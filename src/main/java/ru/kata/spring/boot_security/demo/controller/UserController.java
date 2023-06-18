@@ -15,11 +15,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/login")
-    public String loginPage(){
-        return "login";
-    }
-
     @GetMapping("/user")
     public String userInfo(Long id, Model model) {
         Optional<User> user = userService.getUserById(id);
