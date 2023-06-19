@@ -1,5 +1,6 @@
 package ru.kata.spring.boot_security.demo.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +9,7 @@ import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
+@AllArgsConstructor
 @RequestMapping("/admin")
 @Controller
 public class AdminController {
@@ -16,11 +18,7 @@ public class AdminController {
     @Autowired
     private RoleService roleService;
 
-    public AdminController(RoleService roleService) {
-        this.roleService = roleService;
-    }
-
-    @GetMapping()
+    @GetMapping("/")
     public String homeAdmin() {
         //возвращаю страницу админа
         return "redirect:/admin/users";
