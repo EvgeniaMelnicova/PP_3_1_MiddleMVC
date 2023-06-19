@@ -1,40 +1,58 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">>
 <head>
     <meta charset="UTF-8">
-    <title>Login page</title>
+    <title>User table</title>
 </head>
 <body>
-<h1>Welcome to the project 3.1.2. Spring Boot Security!</h1>
-<br/>
-<h2>If you want to continue, please enter the details in the form below.</h2>
-<form method="post" action="/login">
-    <label for="username">Enter e-mail</label>
-    <input type="text" name="j_email" id="username"/>
+<div>
+    <h2>User table in the database:</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>Role</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Phone number</th>
+            <th>E-mail</th>
+            <th>Login</th>
+            <th> </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.getRoles()}"></td>
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.mobilePhone}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.username}"></td>
+            <td style="width: 8%"><a th:href="@{/users/{id}(id=${user.getId()})}">
+                <button style="width: 100%" >Open</button>
+            </a></td>
+        </tr>
+        </tbody>
+    </table>
     <br/>
-    <label for="password">Enter password</label>
-    <input type="password" name="j_password" id="password"/>
-    <br/>
-    <br/>
-    <input type="submit" value="login"/>
-    <br/>
-    <br/>
-    <div th:if="${param.error}" style="color: red">
-        Incorrect name or password!
-    </div>
-</form>
-<br/>
+</div>
+
+<div>
+    <a href="/users/new"><button>Add new user</button></a>
+</div>
 <div>
     <h6>Java Developer Training course.
-    <br>Pre-project. Task 3.1.2. Spring Boot Security.
+        <br>Pre-project. Task 3.1.2. Spring Boot Security.
         <br>Mentoring from SynteticSashka.
         <br>Stylistic design of the project by Moritsuki Kurokami.
     </h6>
 </div>
 </body>
-
 <style>
     body{
         background-color: #000;
@@ -92,7 +110,9 @@
         background-position: right bottom;
     }
     button{
-        color: #696969;
+        color: #C0C0C0;
+        background-color: #000;
+        padding: 5px 10px 5px 10px;
     }
     input[type=submit]{
         color: #C0C0C0;
