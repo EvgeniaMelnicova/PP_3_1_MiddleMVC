@@ -22,11 +22,11 @@ public class StartupInitializer {
     @PostConstruct
     public void initRoles(){
         Role roleUser = new Role();
-        roleUser.setName("ROLE_USER");
+        roleUser.setName("USER");
         rs.save(roleUser);
 
         Role roleAdmin = new Role();
-        roleAdmin.setName("ROLE_ADMIN");
+        roleAdmin.setName("ADMIN");
         rs.save(roleAdmin);
     // Этот работает
 

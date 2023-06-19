@@ -7,8 +7,9 @@
     <title>User table</title>
 </head>
 <body>
+<h1>Welcome to the admin page.</h1>
 <div>
-    <h2>User table in the database:</h2>
+    <h2>Below is detailed information about all users in the database:</h2>
 
     <table>
         <thead>
@@ -45,6 +46,13 @@
 <div>
     <a href="/users/new"><button>Add new user</button></a>
 </div>
+<br>
+<br>
+<p>Please do not forget to log out of your account if you have finished working with the data.
+    <br>Thank you.</p>
+<form style="width: 70px; border: 0px" th:method="GET" action="/logout">
+    <input type="submit" value="Logout">
+</form>
 <div>
     <h6>Java Developer Training course.
         <br>Pre-project. Task 3.1.2. Spring Boot Security.

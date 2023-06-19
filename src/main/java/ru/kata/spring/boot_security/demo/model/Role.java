@@ -24,11 +24,17 @@ public class Role implements GrantedAuthority {
   @Column
   private String name;
 
-  @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
-  private Collection<User> users;
+  //@ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
+ // private Collection<User> users;
 
   @Override
   public String getAuthority() {
-    return null;
+    return name;
+  }
+
+  // Попробуем так
+  @Override
+  public String toString() {
+    return name;
   }
 }

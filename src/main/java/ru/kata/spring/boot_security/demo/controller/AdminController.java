@@ -18,12 +18,6 @@ public class AdminController {
     @Autowired
     private RoleService roleService;
 
-    @GetMapping("/")
-    public String homeAdmin() {
-        //возвращаю страницу админа
-        return "redirect:/admin/users";
-    }
-
     @GetMapping("/users")
     public String getUsers(Model model) {
         model.addAttribute("users", userService.getUsers());
