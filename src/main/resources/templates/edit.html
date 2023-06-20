@@ -1,40 +1,51 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login page</title>
+    <title>Update user</title>
 </head>
 <body>
-<h1>Welcome to the project Spring Boot Security!</h1>
-<br/>
-<h2>If you want to continue, please enter the details in the form below.</h2>
-<form method="post" action="/login">
-    <label for="username">Enter e-mail</label>
-    <input type="text" name="j_email" id="username"/>
+<h1>You are on the user's edit page.</h1>
+<h2>Please, make changes to the form below.</h2>
+<form th:method="PATCH" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
+    <label for="firstName">Name: </label>
+    <input type="text" th:field="*{user.getFirstName()}" id="firstName"/>
+    <br>
+    <label for="lastName">Surname: </label>
+    <input type="text" th:field="*{user.getLastName()}" id="lastName"/>
+    <br>
+    <label for="mobilePhone">Phone number: </label>
+    <input type="text" th:field="*{user.getMobilePhone()}" id="mobilePhone"/>
+    <br>
+    <label for="email">E-mail:</label>
+    <input type="text" th:field="*{user.getEmail()}" id="email"/>
     <br/>
-    <label for="password">Enter password</label>
-    <input type="password" name="j_password" id="password"/>
     <br/>
+    <label for="username">Login: </label>
+    <input type="text" th:field="*{user.getUsername()}" id="username"/>
+    <br>
+    <label for="my_roles">Role: </label>
+    <select multiple name="my_roles" th:field="*{user.getRoles()}" id="my_roles">
+        <option>USER</option>
+        <option>ADMIN</option>
+    </select>
+    <br>
     <br/>
-    <input type="submit" value="login"/>
-    <br/>
-    <br/>
-    <div th:if="${param.error}" style="color: red">
-        Incorrect name or password!
-    </div>
+    <input type="submit" value="Update"/>
 </form>
 <br/>
+<br/>
+<p>If you decide not to make any changes, click here:</p>
+<a href="/users"><button>Cancel</button></a>
 <div>
     <h6>Java Developer Training course.
-    <br>Pre-project. Task 3.1.2. Spring Boot Security.
+        <br>Pre-project. Task 3.1.2. Spring Boot Security.
         <br>Mentoring from SynteticSashka.
         <br>Stylistic design of the project by Moritsuki Kurokami.
     </h6>
 </div>
 </body>
-
 <style>
     body{
         background-color: #000;

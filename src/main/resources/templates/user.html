@@ -1,44 +1,53 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login page</title>
+    <title>User page</title>
 </head>
 <body>
-<h1>Welcome to the project Spring Boot Security!</h1>
+<h1>Welcome to your personal page!</h1>
+<h2>Below you can find more detailed information about your personal data:</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Phone number</th>
+        <th>E-mail</th>
+        <th>Login</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+
+    <tbody>
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${user.mobilePhone}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.username}"></td>
+        <td>User</td>
+    </tr>
+    </tbody>
+</table>
 <br/>
-<h2>If you want to continue, please enter the details in the form below.</h2>
-<form method="post" action="/login">
-    <label for="username">Enter e-mail</label>
-    <input type="text" name="j_email" id="username"/>
-    <br/>
-    <label for="password">Enter password</label>
-    <input type="password" name="j_password" id="password"/>
-    <br/>
-    <br/>
-    <input type="submit" value="login"/>
-    <br/>
-    <br/>
-    <div th:if="${param.error}" style="color: red">
-        Incorrect name or password!
-    </div>
+<h3>This is all the information that is available to receive with your status.</h3>
+<p>Please do not forget to log out of your account after you finish viewing the information.
+    <br>Thank you.</p>
+<form style="width: 70px; border: 0px" th:method="GET" action="/logout">
+    <input type="submit" value="Logout">
 </form>
-<br/>
 <div>
     <h6>Java Developer Training course.
-    <br>Pre-project. Task 3.1.2. Spring Boot Security.
+        <br>Pre-project. Task 3.1.2. Spring Boot Security.
         <br>Mentoring from SynteticSashka.
         <br>Stylistic design of the project by Moritsuki Kurokami.
     </h6>
 </div>
 </body>
-
 <style>
     body{
         background-color: #000;
-        background-image: url("templates/static/my-image.jpg");
+        background-image: url("my-image.jpg");
         background-size: 15%;
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -77,8 +86,7 @@
         color: #C0C0C0;
         position: absolute;
         right: 2%;
-        bottom: 2%;
-    }
+        bottom: 2%;}
     P{color: #C0C0C0;}
 
     form{
@@ -87,12 +95,12 @@
         width: 400px;
         padding: 20px;
         color: #C0C0C0;
-        background: url("templates/static/mementomori.jpg") no-repeat;
+        background: url("mementomori.jpg") no-repeat;
         background-size: auto 90%;
         background-position: right bottom;
     }
     button{
-        color: #696969;
+        color: #C0C0C0;
         background-color: #000;
         padding: 5px 10px 5px 10px;
     }
