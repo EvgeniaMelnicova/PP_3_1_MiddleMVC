@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/user")
+    @GetMapping("/user/{id}")
     public String userInfo(@PathVariable("id") Long id, Model model) {
         Optional<User> user = userService.getUserById(id);
         model.addAttribute("user", user);

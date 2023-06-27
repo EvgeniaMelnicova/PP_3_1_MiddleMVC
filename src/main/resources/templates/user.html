@@ -20,6 +20,7 @@
     </thead>
 
     <tbody>
+    <tr th:each="user: ${user}">
         <td th:text="${user.firstName}"></td>
         <td th:text="${user.lastName}"></td>
         <td th:text="${user.mobilePhone}"></td>
