@@ -10,8 +10,8 @@ import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
 @AllArgsConstructor
-@RequestMapping("/admin")
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
     @Autowired
     private UserService userService;
