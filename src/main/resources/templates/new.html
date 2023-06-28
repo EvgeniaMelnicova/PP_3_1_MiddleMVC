@@ -8,7 +8,7 @@
 <body>
 <h1>You are on the page of creating a new user.</h1>
 <h2>Please enter the user details in the form below:</h2>
-<form th:method="POST" th:action="@{/users}" th:object="${user}">
+<form th:method="POST" th:action="@{/admin/users}" th:object="${user}">
     <label for="firstName">Name: </label>
     <input type="text" th:field="*{user.getFirstName()}" id="firstName"/>
     <br>
@@ -37,7 +37,7 @@
 <br/>
 <br/>
 <p>If you don't want to create a new user, click here:</p>
-<a href="/users"><button>Cancel</button></a>
+<a href="/admin/users"><button>Cancel</button></a>
 <div>
     <h6>Java Developer Training course.
         <br>Pre-project. Task 3.1.2. Spring Boot Security.
