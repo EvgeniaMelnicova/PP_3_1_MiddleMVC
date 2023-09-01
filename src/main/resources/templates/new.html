@@ -8,28 +8,33 @@
 <body>
 <h1>You are on the page of creating a new user.</h1>
 <h2>Please enter the user details in the form below:</h2>
-<form th:method="POST" th:action="@{/admin/users}" th:object="${user}">
+<form th:method="POST" th:action="@{/admin}" th:object="${user}">
     <label for="firstName">Name: </label>
-    <input type="text" th:field="*{user.getFirstName()}" id="firstName"/>
+    <input type="text" th:field="*{firstName}" id="firstName"/>
     <br>
     <label for="lastName">Surname: </label>
-    <input type="text" th:field="*{user.getLastName()}" id="lastName"/>
+    <input type="text" th:field="*{lastName}" id="lastName"/>
     <br>
     <label for="mobilePhone">Phone number: </label>
-    <input type="text" th:field="*{user.getMobilePhone()}" id="mobilePhone"/>
+    <input type="text" th:field="*{mobilePhone}" id="mobilePhone"/>
     <br>
     <label for="email">E-mail:</label>
-    <input type="text" th:field="*{user.getEmail()}" id="email"/>
+    <input type="text" th:field="*{email}" id="email"/>
     <br/>
     <br/>
     <label for="username">Login: </label>
-    <input type="text" th:field="*{user.getUsername()}" id="username"/>
+    <input type="text" th:field="*{username}" id="username"/>
     <br>
-    <label for="my_roles">Role: </label>
-    <select multiple name="my_roles" th:field="*{user.getRoles()}" id="my_roles">
-        <option>USER</option>
-        <option>ADMIN</option>
-    </select>
+    <p>
+        <label for="newRoles">Role</label>
+        <select class="form-control form-control-sm" id="newRoles" name="roles" multiple
+                size="2" required>
+            <option th:each="role : ${roles}"
+                    th:value="${role.id}"
+                    th:text="${role.name}">
+            </option>
+        </select>
+    </p>
     <br>
     <br/>
     <input type="submit" value="Create"/>
