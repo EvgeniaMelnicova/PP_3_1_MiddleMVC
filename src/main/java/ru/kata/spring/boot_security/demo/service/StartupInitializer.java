@@ -16,7 +16,6 @@ import java.util.Set;
 public class StartupInitializer {
     private final RoleService rs;
     private final UserService us;
-    private final UserRepository ur;
     private final BCryptPasswordEncoder bcpe;
 
     @PostConstruct
