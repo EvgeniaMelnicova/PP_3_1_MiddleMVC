@@ -1,0 +1,33 @@
+<form align="center" class="offset-md-4 col-md-3 mt-4 mb-4"
+      th:align="center"
+      th:action="@{/new}"
+      th:object="${user}"
+      method="POST">
+  <label for="name"><b>Name</b></label>
+  <input th:name="name" th:type="text" class="form-control" id="name" required/>
+  <br>
+  <label for="surname"><b>Surname</b></label>
+  <input th:name="surname" th:type="text" class="form-control" id="surname" required/>
+  <br>
+  <label for="mobilePhone"><b>Phone number</b></label>
+  <input th:name="mobilePhone" th:type="number" class="form-control" id="mobilePhone"/>
+  <br>
+  <label for="email"><b>Email</b></label>
+  <input th:name="email" th:type="text" class="form-control" id="email" required/>
+  <br>
+  <label for="username"><b>Login</b></label>
+  <input th:name="username" th:type="text" class="form-control" id="username" required/>
+  <br>
+  <label for="roles"><b>Role</b></label>
+  <select multiple class="form-control form-control-sm" id="roles" name="roles" size="2" required>
+    <option th:each="role: ${roles}"
+            th:value="${role.name}"
+            th:selected="${user.roles.contains(role)}">
+      <th:block th:text="${role.name}">
+      </th:block>
+    </option>
+  </select>
+  <br>
+  <button th:type="submit" class="btn btn-success btn-lg" value="Add new user">Add new user
+  </button>
+</form>

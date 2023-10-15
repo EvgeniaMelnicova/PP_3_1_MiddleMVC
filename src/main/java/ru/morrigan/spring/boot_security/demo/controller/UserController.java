@@ -14,14 +14,12 @@ import ru.morrigan.spring.boot_security.demo.service.UserService;
 @RequestMapping("/")
 @Controller
 public class UserController {
-    @Autowired
-    private UserService userService;
 
     @GetMapping("/user")
     public String userInfo(Model model) {
         final UserDetails user = (UserDetails)
                 SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
-        return "showUser";
+        return "user_page";
     }
 }

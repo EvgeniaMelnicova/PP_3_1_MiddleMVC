@@ -1,0 +1,29 @@
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>№</th>
+        <th>Role</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Phone number</th>
+        <th>E-mail</th>
+        <th>Login</th>
+        <th> </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.getRoles()}"></td>
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${user.mobilePhone}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.username}"></td>
+        <td style="width: 8%"><a th:href="@{/admin/users/{id}(id=${user.getId()})}">
+            <button style="width: 100%" >Open</button>
+        </a></td>
+    </tr>
+    </tbody>
+</table>

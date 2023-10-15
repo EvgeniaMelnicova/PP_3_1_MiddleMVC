@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layouts/main :: htmlhead"/>
+
+<body>
+<div th:replace="fragments/navigation :: navigation"/>
+
+<div class="container-fluid h-100">
+    <div class="row h-100">
+
+        <div class="p-0 col-2">
+            <div class="nav flex-column nav-pills pt-4" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link" href="/admin" sec:authorize="hasAuthority('ADMIN')" role="tab"
+                   aria-controls="v-pills-home" aria-selected="true">Admin</a>
+                <a class="nav-link active" href="/user" sec:authorize="(hasAnyAuthority('ADMIN', 'USER'))" role="tab"
+                   aria-controls="v-pills-profile" aria-selected="false">User</a>
+            </div>
+        </div>
+
+        <div class="p-0 col-10 bg-light">
+            <div class="tabs p-4">
+                <h1>User information page</h1>
+                <div class="pt-2 tab-content">
+                    <div class="tab-pane fade show active" id="description">
+                        <div class="p-3 border">
+                            <h5 class="my-0 mx-2">User info</h5>
+                        </div>
+                        <div class="p-3 bg-white border border-top-0">
+                            <div th:replace="fragments/user-info"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="layouts/main :: footer"/>
+</body>
+</html>

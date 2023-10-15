@@ -1,0 +1,47 @@
+<form th:action="@{/{id}/update(id=${user.id})}"
+      th:object="${user}" th:method="PUT">
+    <div class="modal-body col-md text-center">
+        <br>
+        <label for="name0"><b>Name</b></label>
+        <input th:name="name" th:type="text"
+               class="form-control" id="name0"
+               th:value="${user.name}"/>
+        <br>
+        <label for="surname0"><b>Surname</b></label>
+        <input th:name="surname" th:type="text"
+               class="form-control" id="surname0"
+               th:value="${user.surname}"/>
+        <br>
+        <label for="mobilePhone"><b>Phone number</b></label>
+        <input th:name="age" th:type="number"
+               class="form-control" id="mobilePhone"
+               th:value="${user.mobilePhone}"/>
+        <br>
+        <label for="email0"><b>Email</b></label>
+        <input th:name="email" th:type="text"
+               class="form-control" id="email0"
+               th:value="${user.email}"/>
+        <br>
+        <label for="username"><b>Login</b></label>
+        <input th:name="login" th:type="text"
+               class="form-control" id="username"
+               th:value="${user.username}"/>
+        <br>
+
+        <label for="roles"><b>Role</b></label>
+        <select multiple class="form-control form-control-sm" id="roles" name="roles" size="2" required>
+            <option th:each="role: ${roles}" th:value="${role.name}" th:selected="${user.roles.contains(role)}">
+                <th:block th:text="${role.name}">
+                </th:block>
+            </option>
+        </select>
+        <br><br>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Update
+        </button>
+        <button type="button" class="btn btn-secondary"
+                data-bs-dismiss="modal">Close
+        </button>
+    </div>
+</form>

@@ -21,7 +21,7 @@ public class AdminController {
     @GetMapping("/users")
     public String getUsers(Model model) {
         model.addAttribute("users", userService.getUsers());
-        return "users";
+        return "admin_page";
     }
 
     @GetMapping("/users/{id}")
@@ -33,7 +33,7 @@ public class AdminController {
     @GetMapping("/users/new")
     public String newUser(@ModelAttribute("user") User user, Model model) {
         model.addAttribute("roles", roleService.getAllRoles());
-        return "new";
+        return "new_user";
     }
 
     @PostMapping
