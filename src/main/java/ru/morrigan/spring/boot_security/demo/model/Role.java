@@ -1,17 +1,14 @@
-package ru.kata.spring.boot_security.demo.model;
+package ru.morrigan.spring.boot_security.demo.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import java.util.Collection;
 
 @NoArgsConstructor
 @Data
