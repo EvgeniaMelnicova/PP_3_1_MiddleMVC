@@ -40,7 +40,14 @@ public class AdminController {
         return "new";
     }
 
-    @PostMapping // В Изменениях не нуждается
+    @GetMapping("/users/{id}/edit") // Пока не трогаем.
+    public String getFormForUpdate(Model model, @PathVariable("id") Long id){
+        model.addAttribute("roles", roleService.getAllRoles());
+        model.addAttribute("user", userService.getUserById(id));
+        return "edit";
+    }
+
+    @PostMapping
     public String createUser(@ModelAttribute("user") User user,
                              @RequestParam(value = "roles") String[] roles){
         user.setRoles(roleService.getAllRoles());
@@ -48,15 +55,6 @@ public class AdminController {
         return "redirect:/admin/users";
     }
 
-    @GetMapping("/users/{id}/edit")
-    public String getFormForUpdate(Model model, @PathVariable("id") Long id){
-        model.addAttribute("roles", roleService.getAllRoles());
-        model.addAttribute("user", userService.getUserById(id));
-        return "edit";
-    }
-    // Времменный код
-
-    // до сюда
     @PatchMapping("/users/{id}")
     public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") Long id,
                              @RequestParam(value = "roles") String[] roles){
@@ -64,15 +62,10 @@ public class AdminController {
         userService.updateUser(user);
         return "redirect:/admin/users";
     }
-    // Времменный код
 
-    // до сюда
     @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable("id") Long id){
         userService.deleteUser(id);
         return "redirect:/admin/users";
     }
-    // Времменный код
-
-    // до сюда
 }
