@@ -27,36 +27,29 @@ public class AdminController {
         return "users";
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/users/{id}") // Пока не трогаем.
     public String showUser(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
         return "show";
     }
 
-    // Времменный код
-
-    // до сюда
-
     @GetMapping("/users/new")
-    public String newUser(@ModelAttribute("user") User user, Model model) {
+    public String getFormForCreate(@AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("user", user);
         model.addAttribute("roles", roleService.getAllRoles());
         return "new";
     }
-    // Времменный код
 
-    // до сюда
-    @PostMapping
+    @PostMapping // В Изменениях не нуждается
     public String createUser(@ModelAttribute("user") User user,
                              @RequestParam(value = "roles") String[] roles){
         user.setRoles(roleService.getAllRoles());
         userService.save(user);
         return "redirect:/admin/users";
     }
-    // Времменный код
 
-    // до сюда
     @GetMapping("/users/{id}/edit")
-    public String editUser(Model model, @PathVariable("id") Long id){
+    public String getFormForUpdate(Model model, @PathVariable("id") Long id){
         model.addAttribute("roles", roleService.getAllRoles());
         model.addAttribute("user", userService.getUserById(id));
         return "edit";
