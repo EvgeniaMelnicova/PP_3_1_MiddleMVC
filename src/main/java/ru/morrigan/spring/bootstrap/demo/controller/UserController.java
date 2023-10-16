@@ -1,4 +1,4 @@
-package ru.morrigan.spring.bootstrap.demo.controller;
+package ru.morrigan.spring.boot_security.demo.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.morrigan.spring.bootstrap.demo.service.UserService;
+import ru.morrigan.spring.boot_security.demo.service.UserService;
 
 @AllArgsConstructor
 @RequestMapping("/")
