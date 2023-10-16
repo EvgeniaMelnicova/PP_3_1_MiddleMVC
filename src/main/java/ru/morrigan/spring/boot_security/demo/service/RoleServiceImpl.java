@@ -1,9 +1,9 @@
-package ru.kata.spring.boot_security.demo.service;
+package ru.morrigan.spring.boot_security.demo.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.kata.spring.boot_security.demo.model.Role;
-import ru.kata.spring.boot_security.demo.repository.RoleRepository;
+import ru.morrigan.spring.boot_security.demo.model.Role;
+import ru.morrigan.spring.boot_security.demo.repository.RoleRepository;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;

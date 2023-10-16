@@ -1,13 +1,14 @@
-package ru.kata.spring.boot_security.demo.controller;
+package ru.morrigan.spring.boot_security.demo.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.kata.spring.boot_security.demo.model.User;
-import ru.kata.spring.boot_security.demo.service.RoleService;
-import ru.kata.spring.boot_security.demo.service.UserService;
+import ru.morrigan.spring.boot_security.demo.model.User;
+import ru.morrigan.spring.boot_security.demo.service.RoleService;
+import ru.morrigan.spring.boot_security.demo.service.UserService;
 
 @AllArgsConstructor
 @Controller
@@ -19,21 +20,31 @@ public class AdminController {
     private RoleService roleService;
 
     @GetMapping("/users")
-    public String getUsers(Model model) {
+    public String getAdminPage(@AuthenticationPrincipal User user, Model model) {
         model.addAttribute("users", userService.getUsers());
+        model.addAttribute("user", user);
+        model.addAttribute("roles", roleService.getAllRoles());
         return "users";
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/users/{id}") // Пока не трогаем.
     public String showUser(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
         return "show";
     }
 
     @GetMapping("/users/new")
-    public String newUser(@ModelAttribute("user") User user, Model model) {
+    public String getFormForCreate(@AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("user", user);
         model.addAttribute("roles", roleService.getAllRoles());
         return "new";
+    }
+
+    @GetMapping("/users/{id}/edit") // Пока не трогаем.
+    public String getFormForUpdate(Model model, @PathVariable("id") Long id){
+        model.addAttribute("roles", roleService.getAllRoles());
+        model.addAttribute("user", userService.getUserById(id));
+        return "edit";
     }
 
     @PostMapping
@@ -42,13 +53,6 @@ public class AdminController {
         user.setRoles(roleService.getAllRoles());
         userService.save(user);
         return "redirect:/admin/users";
-    }
-
-    @GetMapping("/users/{id}/edit")
-    public String editUser(Model model, @PathVariable("id") Long id){
-        model.addAttribute("roles", roleService.getAllRoles());
-        model.addAttribute("user", userService.getUserById(id));
-        return "edit";
     }
 
     @PatchMapping("/users/{id}")
