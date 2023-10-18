@@ -3,12 +3,15 @@ package ru.morrigan.spring.bootstrap.demo.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.morrigan.spring.bootstrap.demo.model.User;
 import ru.morrigan.spring.bootstrap.demo.service.RoleService;
 import ru.morrigan.spring.bootstrap.demo.service.UserService;
+
+import java.util.Optional;
 
 @AllArgsConstructor
 @Controller
@@ -27,10 +30,16 @@ public class AdminController {
         return "users";
     }
 
-    @GetMapping("/users/{id}") // Пока не трогаем.
-    public String showUser(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("user", userService.getUserById(id));
-        return "show";
+    @GetMapping("/users/{id}")
+    public String showUser(@PathVariable("id") Long id, @AuthenticationPrincipal UserDetails userDetails, Model model) {
+        Optional<User> user = userService.getUserById(id);
+        if (user.isPresent() && userDetails.getUsername().equals(user.get().getUsername())) {
+            model.addAttribute("user", user.get());
+            return "show";
+        } else {
+            // Обработка ошибки доступа
+            return "error";
+        }
     }
 
     @GetMapping("/users/new")
