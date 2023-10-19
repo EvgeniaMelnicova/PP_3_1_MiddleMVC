@@ -29,7 +29,7 @@
   <input readonly type="text" th:value="${user.email}" id="email"/>
   <br/>
   <br/>
-  <a th:href="@{/admin/users/{id}/edit(id=${user.id})}"><button>Update</button></a>
+  <a th:href="@{/admin/users/{id}/edit(id=${user.getId()})}"><button>Update</button></a>
 </form>
 <br/>
 <h2>You can delete a user from the database.</h2>
