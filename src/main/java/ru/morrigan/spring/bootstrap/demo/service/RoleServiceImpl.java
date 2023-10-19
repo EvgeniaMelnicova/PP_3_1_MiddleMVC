@@ -25,6 +25,6 @@ public class RoleServiceImpl implements RoleService {
 
   @Override
   public Role getRoleByName(String role) {
-    return null; // а что должен вернуть метод?
+    return roleRepository.findByName(role);
   }
 }

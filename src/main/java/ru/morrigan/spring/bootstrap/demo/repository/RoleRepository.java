@@ -6,4 +6,5 @@ import ru.morrigan.spring.bootstrap.demo.model.Role;
 
 @Repository
 public interface RoleRepository extends CrudRepository<Role, Long> {
+    Role findByName(String name);
 }
