@@ -52,12 +52,7 @@ public class AdminController {
     }
 
     @PostMapping // Пробуем переписать.
-    public String createUser(@ModelAttribute("user") User user,
-                             @RequestParam(value = "role") String roleName){
-        Role role = roleService.getRoleByName(roleName);
-        Set<Role> roles = new HashSet<>();
-        roles.add(role);
-        user.setRoles(roles);
+    public String createUser(@ModelAttribute("user") User user){
         userService.save(user);
         return "redirect:/admin/users";
     }
