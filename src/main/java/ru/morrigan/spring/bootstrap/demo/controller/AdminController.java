@@ -6,22 +6,21 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.morrigan.spring.bootstrap.demo.model.Role;
 import ru.morrigan.spring.bootstrap.demo.model.User;
-import ru.morrigan.spring.bootstrap.demo.service.RoleService;
-import ru.morrigan.spring.bootstrap.demo.service.UserService;
+import ru.morrigan.spring.bootstrap.demo.service.RoleServiceImpl;
+import ru.morrigan.spring.bootstrap.demo.service.UserServiceImpl;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Optional;
+
 
 @AllArgsConstructor
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
     @Autowired
-    private RoleService roleService;
+    private RoleServiceImpl roleService;
 
     @GetMapping("/users")
     public String getAdminPage(@AuthenticationPrincipal User user, Model model) {
@@ -31,9 +30,10 @@ public class AdminController {
         return "users";
     }
 
-    @GetMapping("/users/{id}") // Dthy`vcz r yfxfke
+    @GetMapping("/users/{id}") // Проверить на работоспособность.
     public String showUser(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("user", userService.getUserById(id));
+        Optional<User> user = userService.getUserById(id);
+        model.addAttribute("user", user.get());
         return "show";
     }
 
@@ -51,7 +51,7 @@ public class AdminController {
         return "edit";
     }
 
-    @PostMapping // Пробуем переписать.
+    @PostMapping
     public String createUser(@ModelAttribute("user") User user){
         userService.save(user);
         return "redirect:/admin/users";
@@ -60,7 +60,6 @@ public class AdminController {
     @PatchMapping("/users/{id}")
     public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") Long id,
                              @RequestParam(value = "roles") String[] roles){
-        user.setRoles(roleService.getAllRoles());
         userService.updateUser(user);
         return "redirect:/admin/users";
     }
