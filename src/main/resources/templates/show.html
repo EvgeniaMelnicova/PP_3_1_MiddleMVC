@@ -28,9 +28,9 @@
   <label for="email">E-mail:</label>
   <input readonly type="text" th:value="${user.email}" id="email"/>
   <br/>
-  <br/>
-  <a th:href="@{/admin/users/{id}/edit(id=${user.getId()})}"><button>Update</button></a>
 </form>
+<br/>
+<a th:href="@{/admin/users/{id}/edit(id=${user.id})}"><button>Update</button></a>
 <br/>
 <h2>You can delete a user from the database.</h2>
 <p style="color: #FF0000; text-align: center">Attention: this action will be performed without a confirmation request!</p>

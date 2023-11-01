@@ -30,7 +30,7 @@ public class AdminController {
         return "users";
     }
 
-    @GetMapping("/users/{id}") // Проверить на работоспособность.
+    @GetMapping("/users/{id}")
     public String showUser(@PathVariable("id") Long id, Model model) {
         Optional<User> user = userService.getUserById(id);
         model.addAttribute("user", user.get());
@@ -44,7 +44,7 @@ public class AdminController {
         return "new";
     }
 
-    @GetMapping("/users/{id}/edit") // Пока не трогаем.
+    @GetMapping("/users/{id}/edit") // Что-то не то?.
     public String getFormForUpdate(Model model, @PathVariable("id") Long id){
         model.addAttribute("roles", roleService.getAllRoles());
         model.addAttribute("user", userService.getUserById(id));
