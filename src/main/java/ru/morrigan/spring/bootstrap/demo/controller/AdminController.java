@@ -44,10 +44,11 @@ public class AdminController {
         return "new";
     }
 
-    @GetMapping("/users/{id}/edit") // Что-то не то?.
+    @GetMapping("/users/{id}/edit") // В ID-шник передается не long? Где?
     public String getFormForUpdate(Model model, @PathVariable("id") Long id){
+        Optional<User> user = userService.getUserById(id);
+        model.addAttribute("user", user.get());
         model.addAttribute("roles", roleService.getAllRoles());
-        model.addAttribute("user", userService.getUserById(id));
         return "edit";
     }
 

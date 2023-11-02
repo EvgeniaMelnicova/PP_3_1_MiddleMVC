@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,8 +28,7 @@
     <br>
     <label for="my_roles">Role: </label>
     <select multiple name="my_roles" th:field="*{roles}" id="my_roles">
-        <option>USER</option>
-        <option>ADMIN</option>
+        <option th:each="role : ${roles}" th:value="${role}" th:text="${role}"></option>
     </select>
     <br>
     <br/>
