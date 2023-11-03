@@ -44,11 +44,12 @@ public class AdminController {
         return "new";
     }
 
-    @GetMapping("/users/{id}/edit") // В ID-шник передается не long? Где?
+    @GetMapping("/users/{id}/edit")
     public String getFormForUpdate(Model model, @PathVariable("id") Long id){
         Optional<User> user = userService.getUserById(id);
         model.addAttribute("user", user.get());
         model.addAttribute("roles", roleService.getAllRoles());
+        System.out.println("ТЕСТ ПРЕДОСТАВЛЕНИЯ ФОРМЫ РЕДАКТИРОВАНИЯ");
         return "edit";
     }
 
@@ -59,8 +60,7 @@ public class AdminController {
     }
 
     @PatchMapping("/users/{id}")
-    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") Long id,
-                             @RequestParam(value = "roles") String[] roles){
+    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") Long id ){
         userService.updateUser(user);
         return "redirect:/admin/users";
     }

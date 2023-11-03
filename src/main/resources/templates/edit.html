@@ -26,9 +26,12 @@
     <label for="username">Login: </label>
     <input type="text" th:field="*{username}" id="username"/>
     <br>
+    <label for="password">Password</label>
+    <input type="text" th:field="*{password}" id="password">
+    <br>
     <label for="my_roles">Role: </label>
     <select multiple name="my_roles" th:field="*{roles}" id="my_roles">
-        <option th:each="role : ${roles}" th:value="${role}" th:text="${role}"></option>
+        <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role}"></option>
     </select>
     <br>
     <br/>
