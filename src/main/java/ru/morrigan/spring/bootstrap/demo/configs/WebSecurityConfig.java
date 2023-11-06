@@ -1,4 +1,4 @@
-package ru.morrigan.spring.boot_security.demo.configs;
+package ru.morrigan.spring.bootstrap.demo.configs;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

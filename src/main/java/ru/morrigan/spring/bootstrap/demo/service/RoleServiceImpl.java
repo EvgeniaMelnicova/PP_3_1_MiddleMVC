@@ -1,9 +1,9 @@
-package ru.morrigan.spring.boot_security.demo.service;
+package ru.morrigan.spring.bootstrap.demo.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.morrigan.spring.boot_security.demo.model.Role;
-import ru.morrigan.spring.boot_security.demo.repository.RoleRepository;
+import ru.morrigan.spring.bootstrap.demo.model.Role;
+import ru.morrigan.spring.bootstrap.demo.repository.RoleRepository;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -22,4 +22,9 @@ public class RoleServiceImpl implements RoleService {
 
   @Override
   public void save(Role role) {roleRepository.save(role);}
+
+  @Override
+  public Role getRoleByName(String role) {
+    return roleRepository.findByName(role);
+  }
 }

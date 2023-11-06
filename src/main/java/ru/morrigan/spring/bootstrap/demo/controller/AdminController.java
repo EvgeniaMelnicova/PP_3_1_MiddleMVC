@@ -1,4 +1,4 @@
-package ru.morrigan.spring.boot_security.demo.controller;
+package ru.morrigan.spring.bootstrap.demo.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,18 +6,21 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.morrigan.spring.boot_security.demo.model.User;
-import ru.morrigan.spring.boot_security.demo.service.RoleService;
-import ru.morrigan.spring.boot_security.demo.service.UserService;
+import ru.morrigan.spring.bootstrap.demo.model.User;
+import ru.morrigan.spring.bootstrap.demo.service.RoleServiceImpl;
+import ru.morrigan.spring.bootstrap.demo.service.UserServiceImpl;
+
+import java.util.Optional;
+
 
 @AllArgsConstructor
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
     @Autowired
-    private RoleService roleService;
+    private RoleServiceImpl roleService;
 
     @GetMapping("/users")
     public String getAdminPage(@AuthenticationPrincipal User user, Model model) {
@@ -27,9 +30,10 @@ public class AdminController {
         return "users";
     }
 
-    @GetMapping("/users/{id}") // Пока не трогаем.
+    @GetMapping("/users/{id}")
     public String showUser(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("user", userService.getUserById(id));
+        Optional<User> user = userService.getUserById(id);
+        model.addAttribute("user", user.get());
         return "show";
     }
 
@@ -40,25 +44,23 @@ public class AdminController {
         return "new";
     }
 
-    @GetMapping("/users/{id}/edit") // Пока не трогаем.
+    @GetMapping("/users/{id}/edit")
     public String getFormForUpdate(Model model, @PathVariable("id") Long id){
+        Optional<User> user = userService.getUserById(id);
+        model.addAttribute("user", user.get());
         model.addAttribute("roles", roleService.getAllRoles());
-        model.addAttribute("user", userService.getUserById(id));
+        System.out.println("ТЕСТ ПРЕДОСТАВЛЕНИЯ ФОРМЫ РЕДАКТИРОВАНИЯ");
         return "edit";
     }
 
     @PostMapping
-    public String createUser(@ModelAttribute("user") User user,
-                             @RequestParam(value = "roles") String[] roles){
-        user.setRoles(roleService.getAllRoles());
+    public String createUser(@ModelAttribute("user") User user){
         userService.save(user);
         return "redirect:/admin/users";
     }
 
     @PatchMapping("/users/{id}")
-    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") Long id,
-                             @RequestParam(value = "roles") String[] roles){
-        user.setRoles(roleService.getAllRoles());
+    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") Long id ){
         userService.updateUser(user);
         return "redirect:/admin/users";
     }

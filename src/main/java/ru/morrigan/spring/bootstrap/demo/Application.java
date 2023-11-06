@@ -1,4 +1,4 @@
-package ru.morrigan.spring.boot_security.demo;
+package ru.morrigan.spring.bootstrap.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
