@@ -1,10 +1,10 @@
-package ru.morrigan.spring.bootstrap.demo.service;
+package ru.morrigan.spring.boot.demo.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-import ru.morrigan.spring.bootstrap.demo.model.Role;
-import ru.morrigan.spring.bootstrap.demo.model.User;
+import ru.morrigan.spring.boot.demo.model.Role;
+import ru.morrigan.spring.boot.demo.model.User;
 
 import javax.annotation.PostConstruct;
 import java.util.HashSet;

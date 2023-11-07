@@ -1,6 +1,6 @@
-package ru.morrigan.spring.bootstrap.demo.service;
+package ru.morrigan.spring.boot.demo.service;
 
-import ru.morrigan.spring.bootstrap.demo.model.User;
+import ru.morrigan.spring.boot.demo.model.User;
 import java.util.List;
 import java.util.Optional;
 

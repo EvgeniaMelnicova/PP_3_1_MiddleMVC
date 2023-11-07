@@ -1,4 +1,4 @@
-package ru.morrigan.spring.bootstrap.demo.configs;
+package ru.morrigan.spring.boot.demo.configs;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;

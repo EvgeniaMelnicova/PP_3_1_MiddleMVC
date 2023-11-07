@@ -1,4 +1,4 @@
-package ru.morrigan.spring.bootstrap.demo.controller;
+package ru.morrigan.spring.boot.demo.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,9 +6,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.morrigan.spring.bootstrap.demo.model.User;
-import ru.morrigan.spring.bootstrap.demo.service.RoleServiceImpl;
-import ru.morrigan.spring.bootstrap.demo.service.UserServiceImpl;
+import ru.morrigan.spring.boot.demo.model.User;
+import ru.morrigan.spring.boot.demo.service.RoleServiceImpl;
+import ru.morrigan.spring.boot.demo.service.UserServiceImpl;
 
 import java.util.Optional;
 

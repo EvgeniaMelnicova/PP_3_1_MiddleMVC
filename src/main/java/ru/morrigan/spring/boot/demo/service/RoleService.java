@@ -1,6 +1,6 @@
-package ru.morrigan.spring.bootstrap.demo.service;
+package ru.morrigan.spring.boot.demo.service;
 
-import ru.morrigan.spring.bootstrap.demo.model.Role;
+import ru.morrigan.spring.boot.demo.model.Role;
 import java.util.Set;
 
 public interface RoleService {

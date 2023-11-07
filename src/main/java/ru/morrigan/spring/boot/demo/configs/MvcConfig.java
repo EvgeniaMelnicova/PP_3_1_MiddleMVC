@@ -1,4 +1,4 @@
-package ru.morrigan.spring.bootstrap.demo.configs;
+package ru.morrigan.spring.boot.demo.configs;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

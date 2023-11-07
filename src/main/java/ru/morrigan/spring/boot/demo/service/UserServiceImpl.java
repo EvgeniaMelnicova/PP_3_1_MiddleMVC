@@ -1,4 +1,4 @@
-package ru.morrigan.spring.bootstrap.demo.service;
+package ru.morrigan.spring.boot.demo.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.morrigan.spring.bootstrap.demo.model.User;
-import ru.morrigan.spring.bootstrap.demo.repository.UserRepository;
+import ru.morrigan.spring.boot.demo.model.User;
+import ru.morrigan.spring.boot.demo.repository.UserRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

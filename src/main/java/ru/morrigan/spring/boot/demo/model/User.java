@@ -1,4 +1,4 @@
-package ru.morrigan.spring.bootstrap.demo.model;
+package ru.morrigan.spring.boot.demo.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

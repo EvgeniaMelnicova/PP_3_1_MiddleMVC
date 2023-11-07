@@ -1,4 +1,4 @@
-package ru.morrigan.spring.bootstrap.demo;
+package ru.morrigan.spring.boot.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
